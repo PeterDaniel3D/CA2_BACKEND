@@ -30,9 +30,9 @@ public class CatsResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("user")
-    @RolesAllowed("user")
+    //@RolesAllowed("user")
     public String getCatPicture() throws IOException {
-        return GSON.toJson(HttpUtils.fetchData("https://thatcopy.pw/catapi/rest/"));
+        return GSON.toJson(HttpUtils.fetchData("https://api.thecatapi.com/v1/images/search"));
     }
 
     @GET
@@ -49,13 +49,12 @@ public class CatsResource {
         bonusComment.add("Jeez! I don't believe it. These facts are trash!");
         bonusComment.add("To be honest, I love dogs more than cats!");
         bonusComment.add("This fact is just pure garbage.");
-        bonusComment.add("Lies. All lies! May I laugh in all eternity!");
-        bonusComment.add("One cat, one hat. Chuck Norris, no cat. Ha ha ha ha. ");
+        bonusComment.add("One cat, one hat. Chuck Norris, no cat. Ha ha ha ha.");
 
         Random rand = new Random();
         int randInt = rand.nextInt(bonusComment.size());
 
-        String json = "{\"url\":\"http://api.voicerss.org/?key=4a3189fb0bf34912aec4aea4873d90b0&hl=en-gb&v=Alice&c=MP3&f=16khz_16bit_stereo&src=" + fact + " " + bonusComment.get(randInt) + ".\", \"fact\":\"" + fact + "\"}";
+        String json = "{\"url\":\"http://api.voicerss.org/?key=4a3189fb0bf34912aec4aea4873d90b0&hl=en-gb&v=Harry&c=MP3&f=16khz_16bit_stereo&src=" + fact + " " + bonusComment.get(randInt) + ".\", \"fact\":\"" + fact + "\"}";
         return GSON.toJson(json);
     }
 
